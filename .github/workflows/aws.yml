@@ -1,0 +1,13 @@
+name: Build Kernel H2OS
+jobs:
+  build:
+	runs-on: ubuntu-18.04
+	steps:
+	  - name: Init Repo
+		run: |
+		  cd ~
+		  git clone https://github.com/cc336625/lge-v500n-kernel.git -b makiras --depth=1
+	  - name: Build With Shell
+	    run: |
+		  cd ~/lge-v500n-kernel
+		  bash build_full.sh
