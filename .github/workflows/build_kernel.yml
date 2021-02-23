@@ -1,8 +1,4 @@
 name: Build Kernel H2OS
-on:
-  push:
-    branches:
-	  - makiras
 jobs:
   build:
 	runs-on: ubuntu-18.04
@@ -10,19 +6,8 @@ jobs:
 	  - name: Init Repo
 		run: |
 		  cd ~
-		  git clone https://github.com/Makiras/op5.git -b makiras --depth=1
+		  git clone https://github.com/cc336625/lge-v500n-kernel.git
 	  - name: Build With Shell
 	    run: |
-		  cd ~/op5
+		  cd ~/lge-v500n-kernel
 		  bash build_full.sh
-	  - name: Package With AnyKernel
-		run: |
-		  cd ~
-		  cp op5/AnyKernel ./ -r
-		  cd AnyKernel/
-		  cp ../op5/out/arch/arm64/boot/Image.gz-dtb ./
-	  - name : Upload artifact
-	    uses: actions/upload-artifact@master
-	    with:
-		  name: blu_spark_makiras_modified.zip
-		  path: /home/runner/AnyKernel/
