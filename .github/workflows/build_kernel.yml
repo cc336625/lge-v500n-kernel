@@ -2,7 +2,7 @@ name: Build Kernel H2OS
 on:
   push:
     branches:
-    	- makiras
+    	- cc336625
 jobs:
   build:
 	runs-on: ubuntu-18.04
